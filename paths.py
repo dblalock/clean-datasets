@@ -2,7 +2,8 @@
 
 import os
 
-DATASETS_DIR = '..'
+currentDir = os.path.dirname(os.path.abspath(__file__))
+DATASETS_DIR = os.path.dirname(currentDir)
 
 j = os.path.join 	# abbreviation
 

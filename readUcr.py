@@ -7,6 +7,26 @@ import paths
 
 UCR_DATASETS_DIR = paths.UCR
 
+# ================================================================
+# Public
+# ================================================================
+
+def getAllUCRDatasets():
+	for dataDir in getAllUCRDatasetDirs():
+		yield UCRDataset(dataDir)
+
+
+class UCRDataset(object):
+
+	def __init__(self, datasetDir):
+		self.Xtrain, self.Ytrain = readUCRTrainData(datasetDir)
+		self.Xtest, self.Ytest = readUCRTestData(datasetDir)
+		self.name = nameFromDir(datasetDir)
+
+# ================================================================
+# Private
+# ================================================================
+
 def readDataFile(path):
 	D = np.genfromtxt(path)
 	labels = D[:,0]
